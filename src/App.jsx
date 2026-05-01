@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import profilePic from './assets/profile.jpg';
 import {
     Github,
     Linkedin,
@@ -36,7 +37,7 @@ const Navbar = () => (
         width: '100%',
         zIndex: 100,
         padding: '1.5rem 2rem',
-        background: 'rgba(2, 6, 23, 0.8)',
+        background: 'rgba(248, 250, 252, 0.8)',
         backdropFilter: 'blur(10px)',
         borderBottom: '1px solid var(--glass-border)',
         display: 'flex',
@@ -54,38 +55,66 @@ const Navbar = () => (
 );
 
 const Hero = () => (
-    <section id="about" className="section-container" style={{ paddingTop: '10rem', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
-        <motion.div variants={staggerContainer} initial="initial" animate="animate">
+    <section id="about" className="section-container" style={{ paddingTop: '10rem', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '4rem' }}>
+        <motion.div variants={staggerContainer} initial="initial" animate="animate" style={{ flex: '1 1 500px' }}>
             <motion.span variants={fadeInUp} style={{ color: 'var(--primary-color)', fontWeight: 600, letterSpacing: '2px', display: 'block', marginBottom: '1rem' }}>
                 WELCOME TO MY PORTFOLIO
             </motion.span>
-            <motion.h1 variants={fadeInUp} style={{ fontSize: '5rem', lineHeight: 1.1, marginBottom: '1.5rem' }}>
+            <motion.h1 variants={fadeInUp} style={{ fontSize: '4.5rem', lineHeight: 1.1, marginBottom: '1.5rem' }}>
                 Hi, I'm <span className="text-gradient">Vikraman S</span>
             </motion.h1>
-            <motion.p variants={fadeInUp} style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '600px', marginBottom: '2.5rem' }}>
+            <motion.p variants={fadeInUp} style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', maxWidth: '600px', marginBottom: '2.5rem' }}>
                 Enthusiastic Computer Science student with strong skills in React.js, JavaScript, and Data Structures & Algorithms. Seeking to contribute to scalable fintech products.
             </motion.p>
-            <motion.div variants={fadeInUp} style={{ display: 'flex', gap: '1.5rem' }}>
+            <motion.div variants={fadeInUp} style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
                 <button className="btn-primary" onClick={() => window.location.href = '#projects'}>View Projects</button>
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                    <a href="https://github.com/vikrmn" target="_blank" rel="noreferrer" style={{ color: 'white' }}><Github size={24} /></a>
-                    <a href="https://linkedin.com/in/vikraman-s-a79bb6296/" target="_blank" rel="noreferrer" style={{ color: 'white' }}><Linkedin size={24} /></a>
+                    <a href="https://github.com/vikrmn" target="_blank" rel="noreferrer" style={{ color: 'var(--text-primary)' }}><Github size={24} /></a>
+                    <a href="https://linkedin.com/in/vikraman-s-a79bb6296/" target="_blank" rel="noreferrer" style={{ color: 'var(--text-primary)' }}><Linkedin size={24} /></a>
                 </div>
             </motion.div>
+        </motion.div>
+        <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }} 
+            animate={{ opacity: 1, scale: 1 }} 
+            transition={{ duration: 0.8 }}
+            style={{ flex: '1 1 350px', display: 'flex', justifyContent: 'center' }}
+        >
+            <div style={{ 
+                position: 'relative', 
+                width: '350px', 
+                height: '350px', 
+                borderRadius: '50%', 
+                padding: '8px', 
+                background: 'var(--gradient)',
+                boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
+            }}>
+                <img 
+                    src={profilePic} 
+                    alt="Vikraman S" 
+                    style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'cover', 
+                        borderRadius: '50%', 
+                        border: '6px solid var(--surface-color)' 
+                    }} 
+                />
+            </div>
         </motion.div>
     </section>
 );
 
 const SkillCard = ({ icon: Icon, title, skills }) => (
     <motion.div variants={fadeInUp} className="glass-card" style={{ height: '100%' }}>
-        <div style={{ background: 'rgba(16, 185, 129, 0.1)', width: 'fit-content', padding: '0.75rem', borderRadius: '12px', marginBottom: '1.5rem' }}>
+        <div style={{ background: 'rgba(14, 165, 233, 0.1)', width: 'fit-content', padding: '0.75rem', borderRadius: '12px', marginBottom: '1.5rem' }}>
             <Icon color="var(--primary-color)" size={28} />
         </div>
         <h3 style={{ marginBottom: '1rem' }}>{title}</h3>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
             {skills.map((skill, i) => (
                 <span key={i} style={{
-                    background: 'rgba(255, 255, 255, 0.05)',
+                    background: 'rgba(0, 0, 0, 0.05)',
                     padding: '0.4rem 0.8rem',
                     borderRadius: '8px',
                     fontSize: '0.85rem',
